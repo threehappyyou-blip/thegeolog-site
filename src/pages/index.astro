@@ -1,0 +1,113 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const recent = allPosts.slice(0, 6);
+
+const statusLabel: Record<string, string> = {
+  fixed: 'fixed',
+  broken: 'broken',
+  note: 'note',
+  teardown: 'teardown',
+};
+---
+
+<BaseLayout
+  title="AI search visibility, logged in public — no agency"
+  description="A real, dated log of what actually broke (and got fixed) trying to stay visible to AI search — run by one operator, not an agency."
+>
+  <section class="wrap hero">
+    <p class="eyebrow">cat about.log</p>
+    <h1>What actually happens when AI decides whether your site exists.</h1>
+    <p class="hero__sub">
+      I run two live English-language sites. This is the dated, public log of
+      every AI-search problem I've had to dig myself out of — broken sitemaps,
+      duplicate-content penalties, traffic that fell off a cliff — fixed with an
+      AI coding agent and my own time, not a $1,500-a-month retainer.
+    </p>
+  </section>
+
+  <section class="wrap diff">
+    <ul class="diff__list">
+      <li>
+        <span class="chip chip--broken">no agency</span>
+        Every fix here, I ran myself. No one is upselling you a retainer.
+      </li>
+      <li>
+        <span class="chip chip--note">no unverified hype</span>
+        If a tactic doesn't hold up when I test it against my own sites, I say so — receipts included.
+      </li>
+      <li>
+        <span class="chip chip--fixed">real logs, not theory</span>
+        Every entry traces back to an actual site, an actual date, and an actual before/after.
+      </li>
+    </ul>
+  </section>
+
+  <section class="wrap log-preview">
+    <div class="log-preview__head">
+      <h2>Recent entries</h2>
+      <a href="/log" class="mono">view full log &rarr;</a>
+    </div>
+
+    {recent.length === 0 ? (
+      <p class="ink-soft">First entry is being logged. Check back shortly.</p>
+    ) : (
+      <div class="rail">
+        {recent.map((post) => (
+          <a class="rail-entry" href={`/log/${post.id}/`}>
+            <div class="rail-entry__meta">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toISOString().slice(0, 10)}
+              </time>
+              <span class={`chip chip--${post.data.status}`}>{statusLabel[post.data.status]}</span>
+            </div>
+            <p class="rail-entry__title">{post.data.title}</p>
+            <p class="rail-entry__dek">{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding: 3.5rem 1.5rem 1rem; }
+  .hero__sub {
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+  .diff { padding: 1.5rem 1.5rem 3rem; }
+  .diff__list {
+    list-style: none;
+    margin: 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    gap: 1rem;
+  }
+  .diff__list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+  .diff__list .chip { flex-shrink: 0; }
+  .log-preview { padding: 1rem 1.5rem 4rem; }
+  .log-preview__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .log-preview__head a { text-decoration: none; font-size: 0.85rem; }
+  @media (max-width: 560px) {
+    .diff__list li { flex-direction: column; gap: 0.4rem; }
+  }
+</style>

@@ -1,0 +1,8 @@
+# thegeolog.com
+# This site's whole thesis is AI search visibility, so it starts from
+# maximally open crawl access. Tighten only with a specific reason.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://thegeolog.com/sitemap-index.xml

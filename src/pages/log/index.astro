@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const statusLabel: Record<string, string> = {
+  fixed: 'fixed',
+  broken: 'broken',
+  note: 'note',
+  teardown: 'teardown',
+};
+---
+<BaseLayout
+  title="The log"
+  description="Every dated entry: what broke, what got fixed, and what I tested that turned out to be hype."
+>
+  <section class="wrap head">
+    <p class="eyebrow">tail -f the-log</p>
+    <h1>The full log</h1>
+    <p class="head__sub">Every entry, oldest problems and newest fixes, in the order they actually happened.</p>
+  </section>
+
+  <section class="wrap">
+    {allPosts.length === 0 ? (
+      <p>No entries logged yet.</p>
+    ) : (
+      <div class="rail">
+        {allPosts.map((post) => (
+          <a class="rail-entry" href={`/log/${post.id}/`}>
+            <div class="rail-entry__meta">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toISOString().slice(0, 10)}
+              </time>
+              <span class={`chip chip--${post.data.status}`}>{statusLabel[post.data.status]}</span>
+              {post.data.tags.slice(0, 2).map((tag) => <span class="tag">#{tag}</span>)}
+            </div>
+            <p class="rail-entry__title">{post.data.title}</p>
+            <p class="rail-entry__dek">{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .head { padding: 3rem 1.5rem 1rem; }
+  .head__sub { color: var(--ink-soft); max-width: 60ch; }
+  .tag { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-faint); }
+</style>

@@ -1,0 +1,92 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** ISO date string. If present, renders article: OG tags + Article JSON-LD instead of WebSite JSON-LD. */
+  pubDate?: string;
+  updatedDate?: string;
+  ogType?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  ogType = 'website',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteName = 'TheGEOLog';
+
+// A single Person schema acts as the author + publisher, since this is a
+// one-operator site — no fictional "editorial team" for AI crawlers to trip over.
+const personSchema = {
+  '@type': 'Person',
+  name: 'TODO: your public byline name', // decide this deliberately — see /about
+  url: new URL('/about', Astro.site).toString(),
+};
+
+const jsonLd = pubDate
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description,
+      datePublished: pubDate,
+      dateModified: updatedDate || pubDate,
+      author: personSchema,
+      publisher: personSchema,
+      mainEntityOfPage: canonicalURL.toString(),
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: siteName,
+      description,
+      url: Astro.site?.toString(),
+      author: personSchema,
+    };
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title} · {siteName}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    {pubDate && <meta property="article:published_time" content={pubDate} />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="alternate" type="application/rss+xml" title={siteName} href="/rss.xml" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Source+Serif+4:ital,wght@1,400&display=swap');
+
+:root {
+  /* Paper: cool, muted neutral — deliberately not the warm-cream default */
+  --paper: #eff1ef;
+  --paper-raised: #e7e9e5;
+  --ink: #1a1d24;
+  --ink-soft: #565b66;
+  --ink-faint: #8b8f96;
+  --rule: #d3d6d0;
+
+  /* Interactive accent — confident ink-blue, not terracotta */
+  --accent: #1f4e8c;
+  --accent-soft: #e4ecf6;
+
+  /* Log-status signal colors — functional, not decorative */
+  --signal-fixed: #146b52;
+  --signal-fixed-bg: #e5f0ec;
+  --signal-broken: #a6402f;
+  --signal-broken-bg: #f5e9e6;
+  --signal-note: #8a6d1d;
+  --signal-note-bg: #f2ede0;
+  --signal-teardown: #5b4b93;
+  --signal-teardown-bg: #ece9f3;
+
+  --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+
+  --measure: 68ch;
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--paper);
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a, .chip { transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease; }
+}
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { background: var(--accent-soft); }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2.1rem, 4.4vw, 3.4rem); }
+h2 { font-size: clamp(1.5rem, 2.6vw, 1.9rem); }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1.3em; }
+
+.wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.wrap--wide {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Mono utility text: nav, dates, eyebrows, labels — the "systems log" voice */
+.mono {
+  font-family: var(--mono);
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-transform: lowercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+.eyebrow::before { content: '$'; color: var(--ink-faint); }
+
+/* Status chip — the recurring signature element */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.18em 0.55em;
+  border-radius: var(--radius);
+  border: 1px solid currentColor;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.chip--fixed { color: var(--signal-fixed); background: var(--signal-fixed-bg); }
+.chip--broken { color: var(--signal-broken); background: var(--signal-broken-bg); }
+.chip--note { color: var(--signal-note); background: var(--signal-note-bg); }
+.chip--teardown { color: var(--signal-teardown); background: var(--signal-teardown-bg); }
+
+/* The log rail: repeating list of dated entries used on the homepage + /log index */
+.rail { border-top: 1px solid var(--rule); }
+
+.rail-entry {
+  display: block;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+}
+.rail-entry:hover { background: transparent; }
+.rail-entry:hover .rail-entry__title { color: var(--accent); }
+
+.rail-entry__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.rail-entry__title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0 0 0.35rem;
+  color: var(--ink);
+}
+
+.rail-entry__dek {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* Site chrome */
+.site-header {
+  border-bottom: 1px solid var(--rule);
+  padding: 1.1rem 0;
+}
+.site-header__inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.site-header__logo {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.site-header__logo:hover { background: none; color: var(--accent); }
+.site-header__logo .dim { color: var(--ink-faint); font-weight: 400; }
+
+.site-nav { display: flex; gap: 1.25rem; font-family: var(--mono); font-size: 0.85rem; }
+.site-nav a { color: var(--ink-soft); text-decoration: none; }
+.site-nav a:hover { color: var(--accent); background: none; }
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 4rem;
+  padding: 2rem 0 3rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+.site-footer a { color: var(--ink-soft); }
+
+/* Article prose */
+.prose h2 { margin-top: 2em; }
+.prose h3 { margin-top: 1.6em; }
+.prose ul, .prose ol { padding-left: 1.3em; margin: 0 0 1.3em; }
+.prose li { margin-bottom: 0.4em; }
+.prose blockquote {
+  margin: 1.6em 0;
+  padding: 0.2em 0 0.2em 1.1em;
+  border-left: 2px solid var(--signal-broken);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.prose code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--paper-raised);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius);
+}
+.prose pre {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+.prose pre code { background: none; padding: 0; color: inherit; }
+.prose hr { border: none; border-top: 1px solid var(--rule); margin: 2.5em 0; }
+.prose figcaption {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  margin-top: 0.5em;
+}
+
+.callout {
+  border: 1px solid var(--rule);
+  background: var(--paper-raised);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem;
+  margin: 1.8em 0;
+  font-size: 0.98rem;
+}
+.callout .eyebrow { margin-bottom: 0.5em; }
+
+@media (max-width: 640px) {
+  body { font-size: 1.05rem; }
+  .site-nav { gap: 0.9rem; font-size: 0.8rem; }
+}

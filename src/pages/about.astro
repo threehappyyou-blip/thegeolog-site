@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="About"
+  description="Why this log exists, who writes it, and what it isn't."
+>
+  <article class="wrap prose about">
+    <p class="eyebrow">whoami</p>
+    <h1>Why this log exists</h1>
+
+    <p>
+      I run two production sites for the U.S. market — a content site and a
+      utility-tools site. Somewhere in the last year, "will Google index this"
+      quietly turned into "will an AI even see this," and most of what I found
+      written about that shift was either sold by a $1,500-a-month agency or
+      written by someone who'd never actually run the fix themselves.
+    </p>
+
+    <p>
+      So I started keeping a log instead. Every entry here starts from a real
+      problem on one of my own sites — a sitemap that silently broke, a batch
+      of pages that cannibalized each other, a crawler rule that was quietly
+      blocking the thing I wanted indexed — and walks through exactly what I
+      did about it, usually with an AI coding agent doing the legwork instead
+      of a retainer.
+    </p>
+
+    <p>
+      <strong>What you'll find here:</strong> dated write-ups with before/after
+      numbers where I have them, the actual prompts and commands I used, and
+      honest calls on which parts of the AI-search-optimization playbook seem
+      to hold up under testing and which parts don't.
+    </p>
+
+    <p>
+      <strong>What you won't find:</strong> a pitch for a retainer, a course,
+      or an audit service. If something here saves you the cost of hiring
+      someone to do it for you, that's the point.
+    </p>
+
+    <div class="callout">
+      <p class="eyebrow">editorial note</p>
+      <p>
+        Placeholder copy — swap in your real bio, and decide here whether you
+        want to name and link your two live sites directly. Naming them lets
+        readers verify every case study against a real, running site, which is
+        probably your strongest point of difference — but it's your call to
+        make deliberately, not a default I should set for you.
+      </p>
+    </div>
+
+    <p>
+      Questions, corrections, or a fix you want logged? <a href="mailto:hello@thegeolog.com">hello@thegeolog.com</a>
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .about { padding: 3rem 1.5rem 4rem; }
+</style>

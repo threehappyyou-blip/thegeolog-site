@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const statusLabel: Record<string, string> = {
+  fixed: 'fixed',
+  broken: 'broken',
+  note: 'note',
+  teardown: 'teardown',
+};
+---
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  pubDate={post.data.pubDate.toISOString()}
+  updatedDate={post.data.updatedDate?.toISOString()}
+  ogType="article"
+>
+  <article class="wrap post">
+    <header class="post__head">
+      <div class="rail-entry__meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toISOString().slice(0, 10)}
+        </time>
+        <span class={`chip chip--${post.data.status}`}>{statusLabel[post.data.status]}</span>
+      </div>
+      <h1>{post.data.title}</h1>
+      <p class="post__dek">{post.data.description}</p>
+      {post.data.tags.length > 0 && (
+        <div class="post__tags">
+          {post.data.tags.map((tag) => <span class="tag">#{tag}</span>)}
+        </div>
+      )}
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="post__footer">
+      <p><a href="/log">&larr; back to the full log</a></p>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .post { padding: 3rem 1.5rem 4rem; }
+  .post__head { margin-bottom: 2.5rem; }
+  .post__dek { font-size: 1.2rem; color: var(--ink-soft); }
+  .post__tags { display: flex; gap: 0.6rem; margin-top: 0.5rem; }
+  .tag { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-faint); }
+  .post__footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 0.9rem; }
+</style>

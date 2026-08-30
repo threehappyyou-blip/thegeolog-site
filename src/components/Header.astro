@@ -1,0 +1,17 @@
+---
+const nav = [
+  { href: '/log', label: 'the log' },
+  { href: '/about', label: 'about' },
+  { href: '/rss.xml', label: 'rss' },
+];
+---
+<header class="site-header">
+  <div class="wrap--wide site-header__inner">
+    <a href="/" class="site-header__logo">thegeolog<span class="dim">.com</span></a>
+    <nav class="site-nav">
+      {nav.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
