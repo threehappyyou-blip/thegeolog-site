@@ -35,6 +35,13 @@ draft: true                  # flip to false when it's ready to publish
 ---
 ```
 
+## Drafting posts with Claude (review-gated, never auto-publishes)
+
+See [`drafts/README.md`](./drafts/README.md). Short version: drop raw notes
+into `drafts/inbox/`, a GitHub Action drafts a full post and opens a PR,
+you review + flip `draft: false` + merge. Requires an `ANTHROPIC_API_KEY`
+repository secret — see that file for setup.
+
 ## Build & deploy
 
 ```
