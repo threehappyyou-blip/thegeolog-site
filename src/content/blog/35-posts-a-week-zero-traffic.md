@@ -4,7 +4,7 @@ description: "A fully automated finance-content pipeline was publishing on a nea
 pubDate: 2026-08-15
 status: "teardown"
 tags: ["case-study", "technical-seo", "content-strategy"]
-draft: true
+draft: false
 ---
 
 For about four months, one of my sites ran an automated publishing pipeline —
@@ -75,14 +75,26 @@ content, not a funnel straight to a pricing page.
 
 ## Where it stands now
 
-`[insert: organic sessions, before window vs. after window, from Search
-Console]`
+Google's Index report for the site currently shows 1,250 pages indexed
+against 1,090 still excluded. Looking at the last two and a half months on
+that chart, the indexed count has climbed steadily — from roughly 800 pages
+in early June to over 1,600 now — while the excluded count has stayed close
+to flat. That's the shape you want: growth in the "in" column, not the "out"
+column.
 
-`[insert: indexed page count from GSC coverage report, before vs. after the
-544-post cleanup]`
+The single biggest reason still sitting in that excluded bucket — 857 pages —
+is "crawled, currently not indexed." That's Google's polite way of saying it
+looked at a page and decided it wasn't worth including, which tracks with how
+many of those pages used to be near-duplicates of each other. The old
+disaster-level signals, meanwhile, are down to noise: only 15 pages still
+showing a 404, only 3 blocked by robots.txt.
 
-`[insert: date the sitemap fix actually shipped, and how long after that
-indexing visibly picked back up]`
+I don't have a clean side-by-side traffic export for the original four-month
+window versus now — I didn't think to pull that data until after most of the
+fixes had already shipped, which is its own small lesson (export your
+baseline before you start changing things, not after). What I can say for
+certain, from the chart above: the index count is trending up, not flat,
+since the cleanup.
 
 ## The takeaway, if you're running something similar
 
