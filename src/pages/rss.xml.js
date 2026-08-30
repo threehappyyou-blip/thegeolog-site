@@ -10,6 +10,7 @@ export async function GET(context) {
     title: 'TheGEOLog',
     description: 'A real, dated log of what actually broke (and got fixed) trying to stay visible to AI search.',
     site: context.site,
+    stylesheet: '/rss-styles.xsl',
     items: posts.map((post) => ({
       title: post.data.title,
       description: post.data.description,
