@@ -35,6 +35,11 @@ draft: true                  # flip to false when it's ready to publish
 ---
 ```
 
+## Before publishing anything
+
+Read [`CONTENT_PLAYBOOK.md`](./CONTENT_PLAYBOOK.md) — AdSense readiness,
+the per-post SEO/CTR checklist, and how to get new posts indexed fast.
+
 ## Drafting posts with Claude (review-gated, never auto-publishes)
 
 See [`drafts/README.md`](./drafts/README.md). Short version: drop raw notes

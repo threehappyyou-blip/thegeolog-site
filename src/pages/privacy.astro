@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const lastUpdated = 'August 30, 2026';
+---
+<BaseLayout
+  title="Privacy Policy"
+  description="What this site collects, what it doesn't, and how advertising cookies are used."
+>
+  <article class="wrap prose about">
+    <p class="eyebrow">cat privacy.log</p>
+    <h1>Privacy Policy</h1>
+    <p class="dek">Last updated: {lastUpdated}</p>
+
+    <p>
+      TheGEOLog (thegeolog.com) is operated by Mark Won. This page explains
+      what information this site collects, how it's used, and the choices
+      available.
+    </p>
+
+    <h2>What this site doesn't do</h2>
+    <p>
+      There are no user accounts, no comment system, and no forms that collect
+      personal information. Reaching out is done by email, which is between
+      you and the recipient — not stored or processed by this site.
+    </p>
+
+    <h2>Analytics</h2>
+    <p>
+      This site may use privacy-focused analytics (such as aggregate,
+      non-identifying traffic metrics from its hosting provider) to understand
+      which entries are read and how the site performs. These tools do not
+      identify individual visitors.
+    </p>
+
+    <h2>Advertising and cookies</h2>
+    <p>
+      This site may display advertising served by Google and other third-party
+      advertising vendors. These vendors may use cookies — including the
+      DoubleClick DART cookie — to serve ads based on a visitor's prior visits
+      to this site or other sites on the web. Google's use of advertising
+      cookies enables it and its partners to serve ads based on your visits to
+      this site and/or other sites on the internet.
+    </p>
+    <p>
+      You can opt out of personalized advertising by visiting
+      {' '}<a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google's Ads Settings</a>,
+      or opt out of third-party vendor use of cookies for personalized
+      advertising by visiting{' '}
+      <a href="https://www.aboutads.info/choices" target="_blank" rel="noopener noreferrer">www.aboutads.info</a>.
+    </p>
+
+    <h2>Third-party links</h2>
+    <p>
+      Entries on this site link to external tools, documentation, and
+      sources. Those sites have their own privacy practices, which this
+      policy doesn't cover.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      This policy may be updated as the site changes. The date at the top of
+      this page reflects the most recent revision.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this policy: <a href="mailto:hello@thegeolog.com">hello@thegeolog.com</a>
+    </p>
+
+    <div class="callout">
+      <p class="eyebrow">note</p>
+      <p>
+        This is a standard, generic policy template covering the common case
+        (a content site with no accounts, using analytics and Google-served
+        ads). It is not legal advice. If this site later adds an email list,
+        a comment system, or serves visitors from the EU/UK or California in
+        volume, it's worth having this reviewed for GDPR/CCPA-specific
+        disclosures at that point.
+      </p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .about { padding: 3rem 1.5rem 4rem; }
+  .dek { color: var(--ink-faint); font-family: var(--mono); font-size: 0.85rem; margin-top: -0.5rem; }
+</style>

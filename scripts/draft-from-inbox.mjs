@@ -35,12 +35,21 @@ Respond with ONLY a single JSON object — no markdown code fences, no commentar
 }
 
 Field notes:
-- description: one sentence, under 160 characters, written for a meta description.
+- title: specific, not generic — a number or concrete detail beats an
+  abstract claim ("35 posts a week, zero traffic" beats "why frequency
+  doesn't guarantee traffic"). Keep it under ~60 characters so it isn't
+  truncated in search results.
+- description: written like the pitch that earns a click in a results page,
+  not a dry summary. State the specific outcome. Under ~155 characters.
 - status: "fixed" if the notes describe a resolved problem, "broken" if it's still unresolved, "teardown" for a full multi-part audit, "note" for a short observation or fact-check.
-- tags: 2-4 short kebab-case tags.
-- body: the post body in Markdown, using "##" for headings. You may use one
-  <div class="callout"><p class="eyebrow">label</p><p>text</p></div> block for
-  a single key emphasis, but don't overuse it.`;
+- tags: 2-4 short kebab-case tags — reuse tags from earlier posts where the
+  topic genuinely matches, rather than inventing a near-duplicate tag.
+- body: the post body in Markdown, using "##" for headings. Open with 2-3
+  sentences that restate the specific claim from the title in plain
+  language — that opening is what both search snippets and AI answer
+  engines tend to quote, so don't bury it under throat-clearing. You may use
+  one <div class="callout"><p class="eyebrow">label</p><p>text</p></div>
+  block for a single key emphasis, but don't overuse it.`;
 
 function slugify(title) {
   return title
