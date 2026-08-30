@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="404"
+  description="This page isn't in the log."
+>
+  <section class="wrap notfound">
+    <p class="eyebrow">grep -r "this page" ./log</p>
+    <h1>404 — no match found.</h1>
+    <p class="notfound__sub">
+      Nothing at this URL. It may have moved, or never existed.
+    </p>
+    <p><a href="/">&larr; back to the log</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound { padding: 4.5rem 1.5rem; text-align: left; }
+  .notfound__sub { color: var(--ink-soft); font-size: 1.1rem; }
+</style>
