@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Comments from '../../components/Comments.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -51,6 +52,8 @@ const statusLabel: Record<string, string> = {
     <footer class="post__footer">
       <p><a href="/log">&larr; back to the full log</a></p>
     </footer>
+
+    <Comments />
   </article>
 </BaseLayout>
 

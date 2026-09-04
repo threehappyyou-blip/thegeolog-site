@@ -76,3 +76,21 @@ Run through this before hitting publish (before flipping `draft: false`):
       1,000+ word case study beats three thin posts. The site's entire
       premise is the opposite of scaled publishing; the cadence should prove
       that, not just the copy.
+
+## 4. Turning on comments (Giscus)
+
+Comments are already wired into every post (`src/components/Comments.astro`)
+but need two real IDs from GitHub before they'll actually render. One-time
+setup:
+
+- [ ] Repo → **Settings → General → Features** → check **Discussions**.
+- [ ] Install the [giscus app](https://github.com/apps/giscus) on this repo
+      only (not all repos).
+- [ ] Go to [giscus.app](https://giscus.app), enter
+      `threehappyyou-blip/thegeolog-site` under Repository. Once it shows a
+      green check, set Mapping to "pathname" and Category to "Comments"
+      (create that category if it's not offered). Scroll down — it generates
+      the real `<script>` snippet with your actual `data-repo-id` and
+      `data-category-id`.
+- [ ] Copy those two values into `src/components/Comments.astro`, replacing
+      `TODO_REPO_ID` and `TODO_CATEGORY_ID`.
