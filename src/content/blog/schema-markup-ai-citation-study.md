@@ -4,7 +4,7 @@ description: "FAQ schema is the most recommended AI-search tactic on the interne
 pubDate: 2026-09-04
 status: "note"
 tags: ["schema-markup", "fact-check", "ai-search"]
-draft: true
+draft: false
 ---
 
 FAQ schema shows up on nearly every AI-search checklist as the highest-leverage

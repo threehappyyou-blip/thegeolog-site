@@ -4,7 +4,7 @@ description: "Four credible studies measured how much AI Overviews reduce organi
 pubDate: 2026-09-04
 status: "note"
 tags: ["ai-overviews", "click-through-rate", "search-data"]
-draft: true
+draft: false
 ---
 
 Ask how much AI Overviews have cut organic click-through rates and you'll get
