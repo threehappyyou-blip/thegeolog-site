@@ -1,7 +1,7 @@
 ---
 title: "1,885 Pages Added Schema Markup. Their AI Citations Didn't Move."
 description: "FAQ schema is the most recommended AI-search tactic on the internet. A controlled study tracking real pages found no meaningful citation gain from adding it."
-pubDate: 2026-09-04
+pubDate: 2026-09-01
 status: "note"
 tags: ["schema-markup", "fact-check", "ai-search"]
 draft: false
