@@ -94,3 +94,26 @@ setup:
       `data-category-id`.
 - [ ] Copy those two values into `src/components/Comments.astro`, replacing
       `TODO_REPO_ID` and `TODO_CATEGORY_ID`.
+
+## 5. The actual differentiator: place, not space
+
+Generic AEO/GEO content — even when accurate and well-sourced — is
+replaceable. Any operator's AI assistant can research the same studies and
+write the same summary. That's "space": interchangeable, forgettable.
+
+What isn't replaceable: a specific person's lived judgment about what
+happened to them, recorded honestly, including the mistakes. That's "place"
+— the reason someone comes back and starts trusting the byline, not just the
+individual post.
+
+Rule going forward: Claude does not originate and fully draft a "neutral
+research summary" post on its own initiative. Every post — including
+research/fact-check posts — should be anchored in a specific moment of the
+operator's own reaction, decision, or stake, not presented as content anyone
+else's AI could have produced from the same sources. "What happened, and
+what I decided about it" is the operator's call to make. Claude's job is
+turning that into a well-written, well-sourced post — not picking the topic
+from nothing.
+
+Real mistakes and dead ends belong in the log as much as fixes do. Hiding
+them undermines the one asset — trust in the name — that actually compounds.
