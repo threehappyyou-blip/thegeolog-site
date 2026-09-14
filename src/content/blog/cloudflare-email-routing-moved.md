@@ -35,8 +35,8 @@ the way older guides describe, it's not a matter of scrolling further. It
 moved to a different part of the dashboard entirely.
 
 <div class="callout">
-<p class="eyebrow">what this cost</p>
-<p>Nothing broke and nothing was lost — it just meant a detour through two irrelevant settings pages before finding the actual feature. The lesson isn't "Cloudflare did something wrong." It's that a mental model of where a setting lives can go stale without any announcement, and the fix is checking the live dashboard rather than trusting what you remember from six months ago.</p>
+<p class="eyebrow">what actually happened on screen</p>
+<p>Two dead-end page loads — /email/dmarc-management, then /email/security — before I stopped assuming Email Routing had just moved down a menu and started searching for where it actually went instead.</p>
 </div>
 
 ## The part that went smoother than expected
@@ -58,17 +58,10 @@ hadn't been true for a while. Worth double-checking the real value on screen
 rather than the one you're carrying around in your head, especially after a
 detour that already had two wrong turns in it.
 
-## Where it stands now
+## Where things stand
 
-The rule is live: mail to hello@thegeolog.com forwards to the correct inbox,
-status shows Active. Sending a live test message is the last step, still
-pending as of writing this.
-
-## The takeaway
-
-Platforms move things. Docs and old tutorials — including the ones in your
-own head — lag behind. When a setting isn't where a guide says it should be,
-the fastest path isn't clicking around the same wrong section harder. It's
-checking whether the feature moved somewhere structurally different, and
-verifying every value on the actual current screen instead of the one you
-remember.
+The rule is live: mail to hello@thegeolog.com is set to forward, status
+shows Active. I haven't sent the confirmation test email yet as of writing
+this — I wrote this entry before actually confirming it reaches an inbox,
+which is a slightly backwards order of operations. Updating this line once I
+know for sure.
