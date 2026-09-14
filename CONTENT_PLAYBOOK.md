@@ -117,3 +117,27 @@ from nothing.
 
 Real mistakes and dead ends belong in the log as much as fixes do. Hiding
 them undermines the one asset — trust in the name — that actually compounds.
+
+## 6. The sentence-level test (before publishing)
+
+For every post — especially closing lines and anything that sounds like a
+"lesson" — ask: could someone who didn't experience this specific thing today
+have written this sentence? If yes, cut it or make it more specific. A
+generic lesson wrapped around a real incident is exactly what reads as
+AI-written, even when the incident itself is genuine.
+
+What this means in practice:
+
+- Keep exact numbers, error text, timestamps, and page/menu paths verbatim
+  rather than paraphrasing them — that specificity is the actual signal of
+  authenticity, not a stylistic choice.
+- Use `drafts/inbox/` as a same-day capture, not a summary written later.
+  Jot the exact error message, the exact number, the decision made, on the
+  day it happens. Reconstructing from memory a week later loses precisely
+  the detail that makes a post feel real instead of generic.
+- Keep what was wrong or unknown at the time. Cutting a mistake to look more
+  competent is the opposite of what makes this site's case studies work.
+- Endings should stay inside the specific moment — what's still unresolved,
+  what happens next, specifically — rather than zooming out into a general
+  "takeaway." That zoom-out is usually the exact sentence that fails the
+  test above.
